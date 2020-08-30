@@ -2,6 +2,10 @@
 const app = require('../src/app');
 const http = require('http');
 const express = require('express');
+const mongoDB = require('./db.config');
+
+// Inicializa o banco
+mongoDB.init();
 
 const port = parseInt(process.argv.slice(2)) || 3000;
 app.set('port', port);
