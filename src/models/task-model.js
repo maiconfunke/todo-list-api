@@ -18,7 +18,15 @@ const schema = new Schema({
         type: Boolean,
         required: false,
         default: true
-    }
+    },
+    listId: {
+        type: String,
+        required: false
+    },
+    tags:[{
+        type: String,
+        required: false
+    }]
 },{ versionKey: false });
 
-module.exports = mongoose.model('List', schema);
+module.exports = mongoose.model('Task', schema);

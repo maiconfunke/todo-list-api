@@ -1,5 +1,6 @@
 const homeRoute = require('./home-route');
-const listsRoute = require('./lists/lists-route');
+const listsRoutes = require('./lists/lists-routes');
+const tasksRoutes = require('./tasks/task-routes');
 
 
-module.exports = [homeRoute, listsRoute]
+module.exports = [ homeRoute, listsRoutes, tasksRoutes ];

@@ -4,10 +4,13 @@ const express = require('express');
 const router = express.Router();
 
 // Carrega o controller
-const controller = require('./lists-route-controller');
+const controller = require('./lists-routes-controller');
 
 // Retorna todas as listas
-router.get('/api/v1/lists', controller.getLists);
+router.get('/api/v1/lists', controller.getLists(true));
+
+// Retorna todas as listas arquivadas
+router.get('/api/v1/lists/archived', controller.getLists(false));
 
 // Retorna lista específica com base no ID
 router.get('/api/v1/lists/:id', controller.getList);
@@ -20,6 +23,12 @@ router.post('/api/v1/lists', controller.createList);
 
 // Edita uma lista específica com base no ID
 router.put('/api/v1/lists/:id', controller.updateList);
+
+// Arquiva uma lista com base no ID
+router.put('/api/v1/lists/:id/archived', controller.archiveList);
+
+// Reabre uma lista arquivada com base no ID
+router.put('/api/v1/lists/archived/:id', controller.unArchiveList);
 
 module.exports = router;
 

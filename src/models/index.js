@@ -1,5 +1,4 @@
 const List = require('./list-model');
+const Task = require('./task-model');
 
-
-
-module.exports = [List]
+module.exports = [List, Task]
