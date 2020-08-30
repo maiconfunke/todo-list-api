@@ -1,3 +1,5 @@
+'use strict';
+
 const mongoose = require('mongoose');
 const { url } = require('./db.conf');
 

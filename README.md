@@ -30,11 +30,11 @@
 Criando apis com nodejs: aula 25
 
 
-
-//200 ok
-//201 created
-//400 bad request
-//404 not found
-//401 nao autenticado
-// 403 acesso negado
-// 500 internal server error
+Requests codes:
+ - 200 ok
+ - 201 created
+ - 400 bad request
+ - 404 not found
+ - 401 unauthorized
+ - 403 forbidden
+ - 500 internal server error

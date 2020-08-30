@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
+
 const app = require('../src/app');
 const http = require('http');
-const express = require('express');
 const mongoDB = require('./db.config');
 
 // Inicializa o banco
