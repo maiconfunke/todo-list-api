@@ -18,7 +18,7 @@
 
  - Criar conta no MATLAB (mongoDB)
 
-#### Objeto Lista
+#### Objeto LISTA
 
  ```javascript
  {
@@ -27,8 +27,17 @@
     "active": true
 }
 ```
-Criando apis com nodejs: aula 25
 
+#### Objeto TASK
+
+ ```javascript
+ {
+    "title": "minha tarefa",
+    "description": "uma breve descrição",
+    "active": true,
+    "listId": null
+}
+```
 
 Requests codes:
  - 200 ok
