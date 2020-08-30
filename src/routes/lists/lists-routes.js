@@ -9,6 +9,9 @@ const controller = require('./lists-routes-controller');
 // Retorna todas as listas
 router.get('/api/v1/lists', controller.getLists(true));
 
+// Retorna todas as tarefas de uma lista
+router.get('/api/v1/lists/:id/tasks', controller.getTasksFromList);
+
 // Retorna todas as listas arquivadas
 router.get('/api/v1/lists/archived', controller.getLists(false));
 

@@ -2,8 +2,9 @@
 
 const mongoose = require('mongoose');
 const List = mongoose.model('List');
+const Task = mongoose.model('Task');
 
-// Protocolo GET
+// Retorna todas as listas ativas/inativas com base no atributo ACTIVE
 exports.getLists = (isActive) => {
     return (req, res, next) => {
         List.find({ active: isActive })
@@ -15,7 +16,18 @@ exports.getLists = (isActive) => {
     };
 };
 
-// Protocolo GET
+// Retorna todas as tasks de uma lista
+exports.getTasksFromList = (req, res, next) => {
+    Task.find({ listId: req.params.id })
+        .then((data) => {
+            res.status(200).send(data);
+        }).catch((error) => {
+            res.status(404).send(error);
+        });
+};
+
+
+// Retorna uma lista específica com base no ID
 exports.getList = (req, res, next) => {
     List.findOne({ _id: req.params.id })
         .then((data) => {
@@ -25,7 +37,7 @@ exports.getList = (req, res, next) => {
         });
 };
 
-// Protocolo DELETE
+// Remove uma lista como base no ID
 exports.removeList = (req, res, next) => {
     List.findByIdAndRemove(req.params.id)
         .then((success) => {
@@ -35,7 +47,7 @@ exports.removeList = (req, res, next) => {
         });
 };
 
-// Protocolo POST
+// Cria uma nova lista
 exports.createList = (req, res, next) => {
     const list = new List();
     list.description = req.body.description;
@@ -49,7 +61,7 @@ exports.createList = (req, res, next) => {
         });
 };
 
-// Protocolo PUT
+// Altera uma lista com base no ID
 exports.updateList = (req, res, next) => {
     List.findByIdAndUpdate(req.params.id, {
         $set: {
@@ -65,6 +77,7 @@ exports.updateList = (req, res, next) => {
         });
 };
 
+// Arquiva uma lista com base no ID
 exports.archiveList = (req, res, next) => {
     List.findByIdAndUpdate(req.params.id, {
         $set: {
@@ -78,6 +91,7 @@ exports.archiveList = (req, res, next) => {
         });
 };
 
+//Reabre uma lista com base no ID
 exports.unArchiveList = (req, res, next) => {
     List.findByIdAndUpdate(req.params.id, {
         $set: {

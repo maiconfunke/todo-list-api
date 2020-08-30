@@ -8,7 +8,7 @@
  ```
  - Instalar as dependencias
  ```
- npm install http express debug --save
+ npm install http express --save
  ```
 
  - Instalar o mongoose
@@ -27,7 +27,7 @@
     "active": true
 }
 ```
-
+Criando apis com nodejs: aula 25
 
 
 
