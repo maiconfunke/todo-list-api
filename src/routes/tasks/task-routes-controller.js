@@ -40,7 +40,7 @@ exports.createTask = (req, res, next) => {
     const task = new Task();
     task.description = req.body.description;
     task.title = req.body.title;
-    task.active = req.body.active;
+    task.active = req.body.active || true;
     task.listId = '';
     task.save()
         .then((success) => {

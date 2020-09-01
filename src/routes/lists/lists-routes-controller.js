@@ -52,7 +52,7 @@ exports.createList = (req, res, next) => {
     const list = new List();
     list.description = req.body.description;
     list.title = req.body.title;
-    list.active = req.body.active;
+    list.active = req.body.active || true;
     list.save()
         .then((success) => {
             res.status(201).send({ message: 'Lista criada com sucesso!', data: success });
