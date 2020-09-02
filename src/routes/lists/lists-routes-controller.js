@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const { remove } = require('../../models/list-model');
 const List = mongoose.model('List');
 const Task = mongoose.model('Task');
 
@@ -37,7 +38,7 @@ exports.getList = (req, res, next) => {
         });
 };
 
-// Remove uma lista como base no ID
+// Remove uma lista como base no ID e suas Tarefas
 exports.removeList = (req, res, next) => {
     List.findByIdAndRemove(req.params.id)
         .then((success) => {
@@ -45,6 +46,10 @@ exports.removeList = (req, res, next) => {
         }).catch((error) => {
             res.status(400).send({ message: 'Falha ao remover a lista', data: error });
         });
+
+    Task.find({ listId: req.params.id }).then((tasks) => {
+        tasks.forEach(task => task.remove());
+    });
 };
 
 // Cria uma nova lista
