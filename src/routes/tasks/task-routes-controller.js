@@ -41,7 +41,7 @@ exports.createTask = (req, res, next) => {
     task.description = req.body.description;
     task.title = req.body.title;
     task.active = req.body.active || true;
-    task.listId = req.body.active || '';
+    task.listId = req.body.listId || '';
     task.save()
         .then((success) => {
             res.status(201).send({ message: 'Tarefa criada com sucesso!', data: success });
